@@ -1,9 +1,10 @@
-FROM anapsix/alpine-java
-RUN cd /
-RUN mkdir webgoat
-RUN cd /webgoat
-ADD https://github.com/WebGoat/WebGoat-Legacy/releases/download/v6.0.1/WebGoat-6.0.1-war-exec.jar .
-RUN chmod +x WebGoat-6.0.1-war-exec.jar
-CMD java -jar WebGoat-6.0.1-war-exec.jar
+FROM tomcat:7-alpine
+
+RUN wget -qO webapps/WebGoat.war https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/webgoat/WebGoat-5.4.war
+COPY tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
+COPY webgoat.sh /usr/local/tomcat/webgoat.sh
+
+WORKDIR /usr/local/tomcat
 EXPOSE 8080
-#EOF
+
+ENTRYPOINT [ "./webgoat.sh" ]
