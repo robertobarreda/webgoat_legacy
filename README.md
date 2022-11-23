@@ -5,7 +5,7 @@ application flaws.  The exercises are intended to
 be used by people to learn about application penetration
 testing techniques.
 
-> This repo is a readily available docker image for WebGoat 5.4
+> This repo is a readily available docker image for WebGoat 5.3
 > `docker run --name webgoat --rm -p 8080:8080 robertobarreda/webgoat-legacy`
 
 WARNING 1: While running this program your machine will be
